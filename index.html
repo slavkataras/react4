@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"/>
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+ 
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <title>React App</title>
+  </head>
+  <body>
+    <script>
+      class Pallet {
+          constructor(txt, arr) {
+              this.name = txt;
+              this.colors = arr;
+          }
+      }
+      const colors = [
+          new Pallet("Triadic", ["#FF00C6", "#C6FF00", "#00C6FF"]),
+          new Pallet("Tints", ["#FF00C6", "#FF20CD", "#FF40D4", "#FF60DB", "#FF80E3"]),
+          new Pallet("Shades", ["#FF00C6", "#DF00AD", "#BF0095", "#9F007C", "#800063"])
+      ];
+      for (const val of colors) {
+          console.log(val);
+          const cards = document.createElement("div");
+          cards.className = "cards";
+
+          const caption = document.createElement("h1");
+          caption.innerText = val.name;
+          cards.appendChild(caption);
+
+          const container = document.createElement("div");
+
+          val.colors.forEach((color) => {
+              const card = document.createElement("div");
+              card.className = "card";
+              card.innerText = color;
+              card.style.backgroundColor = color;
+              container.appendChild(card);
+          });
+
+          container.className = "colors";
+          cards.appendChild(container);
+
+          document.body.appendChild(cards);
+      }
+    </script>
+
+<style>
+
+    body {
+  box-sizing: border-box;
+  width: 2000px;
+  padding-left: 30px;
+  }
+
+  h1 {
+    font-style: bold;
+    font-size: 40px;
+    margin: 10px;
+    padding-top: 30px;
+  }
+
+  .colors {
+    display: flex;
+  }
+
+  .card {
+    margin-right: 5px;
+    width: 200px;
+    height: 60px;
+    text-align: center;
+    line-height: 70px;
+    font-size: 15px;
+    border-radius: 8px;
+  }
+
+</style>
+
+  </body>
+</html>
